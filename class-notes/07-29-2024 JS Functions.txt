@@ -1,0 +1,21 @@
+function: method or behavior of an object-templatr-class-prototype
+
+20 lines of code running a task and you will use this in many programs.
+
+REUSABLE: one of the biggest advantages of creating functions.
+Breaking down your program into manageable pieces.
+We'll use meaningful identifiers for functions.
+
+
+CREATING A FUNCTION
+function funcName() {
+    // this is the block of the code
+}
+
+
+funcName(); // invoking function
+
+
+
+void:b\ threse methods do not return any value
+return-type: these methods return something

@@ -1,0 +1,24 @@
+GIT: Global Informaiton Tracker
+    We use git to push our codes to remote repos and collaborate with our other team members or devalopers/QAs/programmers
+
+GIT is a VCS (Version Conttrol System)
+GIT is a distributed version Control
+
+Centralized VCS: we don ot prefer this as if server is down or there is no network, we can't push our changes
+Distributed VCS: we have a local copy of the server repo and can lkeep working even though there is issues with the server or network
+
+GitHub/ GitLab/ Bitbucket/ Azure DevOps: All hosting tools/apps where we can store our remote repos
+
+SSH: Special type of authentication used instead of username and password
+It is more secure and used private-public key pairs
+Public is shared with hosting apps while private is in your local
+Private keys are in your local
+
+ssh-keygen: simplest ssh setup
+
+
+
+HOW TO CLONE AN EXISTING REMOTE REPO TO YOUR LOCAL
+1. Create a remote repository
+2. Clone it to your local (BUT make sure you are on the correct path)
+3.

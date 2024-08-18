@@ -1,0 +1,27 @@
+ASCII representation of characters 
+
+32          Space
+48-57       [0-9]
+65-90       [A-Z]
+97-122      [a-z]
+The rest    Special characters
+
+
+REGEX
+/^\d$/.test(char); // this checks if char starts with a digit, noticed by the \d
+
+
+/^\[A-Z]$/.test(char); // this checks if char starts with an uppercase letter, noticed by the [A-Z]
+
+/^\[a-z]$/.test(char); // this checks if char starts with an lowercase letter, noticed by the [a-z]
+
+/^\[A-Za-z]$/.test(char); // this checks if char is a letter, noticed by the [A-Z]
+
+/^[A-za-z0-9]$/.test(char) // this checks if char is a letter or digit
+
+/^\s$/.test(char); // this checks if char is space
+
+/^[^A-Za-z0-9\s]$/.test(char) // this checks if char is a special character
+
+/^[aeiouAEIOU]$/.test(char) // this checks if char is a vowel
+

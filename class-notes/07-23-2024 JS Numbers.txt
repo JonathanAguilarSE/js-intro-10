@@ -1,0 +1,9 @@
+JavaScript provides us some global functions you can invoke without referencing from any objects.
+
+isNaN()
+parseFloat()
+parseInt()
+isFinite()
+call()
+bind()
+apply()

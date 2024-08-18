@@ -1,0 +1,14 @@
+substring() vs slice()
+
+'Hello'.substring(3, 1); // 'el'
+'Hello'.slice(3, 1); // ''
+
+
+'Morning'.slice(-5, -3); // 'rn'
+'Morning'.substring(-5, -3); // '' - would be same as substring(0, 0)
+
+
+'Computer'.slice(-4); // 'uter'
+'Computer'.substring(-4); // 'Computer'
+
+'pencil'.slice(-2, -4); // ''

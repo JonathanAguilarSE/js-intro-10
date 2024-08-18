@@ -1,0 +1,9 @@
+// If-else
+
+if else statements control the flow of the program based on the condition and executes the statement if condition is truthy (true)
+
+RULES:
+- else block or else if block cannot be used without if blocks
+- it should always start wihth if block
+- else block is optional
+

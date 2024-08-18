@@ -1,0 +1,54 @@
+RECAP:
+- Control flow - conditional statements used to run different blocks of codes based on conditions
+- It checks a condition which always returns true or false to decide the block to be executed
+- There will be only one block execution unless there is nested if-else statements
+
+
+SYNTAX:
+if(condition) {
+    // ..your code here
+} else {
+    // ..your code here
+}
+
+
+TERNARY: is a common approach used for simple if-else statements
+condition ? expression1 : expression2
+
+if condition is true expression1 will be executed
+if condition is false expression2 will be executed
+
+
+
+LADDER IF-ELSE Statements
+let num = _____;
+
+if (num > 0) {
+    console.log('POSITIVE');
+} else if (num < 0) {
+    console.log('NEGATIVE');
+} else {
+    console.log('NEUTRAL');
+}
+
+
+NESTED IF-ELSE Statements
+if (num > 0) {
+    console.log('POSITIVE');
+} else {
+    if (num < 0) {
+        console.log('NEGATIVE');
+    } else {
+        console.log('NEUTRAL');
+    }
+}
+
+if (num !== 0) {
+    if(num > 0) {
+        console.log('POSITIVE');
+    } else {
+        console.log('NEGATIVE')
+    }
+} else {
+    console.log('NEUTRAL')
+}

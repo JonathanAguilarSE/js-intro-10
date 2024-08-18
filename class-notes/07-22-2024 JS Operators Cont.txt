@@ -1,0 +1,60 @@
+RECAP:
+
+assignment, arithmetic calculation, comparison, logical
+
+Arithmetic: +, -, *, /, **, %, ++, --
+Assigment: =, +=, -=, /=, *=, **=
+
+Comparison Operators:
+All the comparison operators return true or false
+
+let x = 5, y = 10, z = '5';
+
+
+
+
+Logical Operators
+Result of logical operators will be boolean - meaning true or false
+&& logical AND
+|| logical OR
+! logical NOT
+
+When you have AND (&&) used with 2 expressions,
+    - the only way to get true: both must be true
+    - if one of them or both are false, then result is false
+
+When you have OR (||) used with 2 expressions,
+    - the only way to get false: both of them should be false
+    - if one or both are true, then the result is true
+
+
+3 <= 1          -> false
+
+
+Falsy Values
+0
+'' ->  empty string
+false
+null
+undefined
+NaN
+
+Any other values are truthy, except the falsy values.
+
+
+Compiled languages: TypeScript, java, C#
+Strict, more syntax rule
+
+Interpreted languages: JS, Ruby, Python
+
+
+!false      -> true
+!true       -> false
+
+
+
+
+
+JS has a built-in Number object which has many useful properties and functions
+properties: information about the object (What it has)
+functions: behaviors of the object (what it does)
