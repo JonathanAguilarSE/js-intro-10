@@ -1,0 +1,93 @@
+Array: built-in JavaScript object used to store multiple data.
+
+Arrays Methods:
+
+Checking if a variable is an array:
+    isArray()       -> checks if is a varaibale s an array and returns boolean
+
+
+Retrieving array elements:
+    []              -> retrieves array elements at given index
+    at()            -> retrieves array elements at given index. Also, works with negative indexes checking backward
+
+
+Adding and removing array elements:
+    push()          -> adds elements to the end of the array
+    pop()           -> removes the last element
+    shift()         -> removes the first element
+    unshift()       -> adds elements to the beginning of the array
+    splice()        -> adds/removes/updates elements in an array
+
+
+Searching some elements in an array:
+    includes()      -> checks if the array has the specified element and returns boolean
+    indexOf()       -> checks if the array has the specified element and returns first index of the match
+    lastIndexOf()   ->checks of the array has the specified element and retunrs last index of the match
+
+
+Reversing arrays:
+    reverse()       -> reverses the array backward
+
+
+Getting a paartial array
+    slice()         -> extracts th epartial array with the specified indexes
+
+
+Merging arrays:
+    concat()        -> merges/combines two or more arrays together
+
+
+spread operator (...)
+
+
+
+sort() methods
+TASK: sorts the array elements alphabetically (lexicographically)
+RETURN: returns the same modified (sorted)
+ARGUMENTS: no args when sorting strings but we can take a callback function as an argument for numbers
+CHANGE ORIGINAL VALUE: yes
+STATIC / NON-STATIC: non-static
+
+
+
+arr.sort((a, b) => a - b); // ascending
+arr.sort((a, b) => b - a); // descending
+
+
+Ascending order: smallest to biggest
+Descending order: biggest to smallest
+
+
+Callback function: it is a function passed as an argument to another function -> (a, b) => a - b
+Higher order function: it is a function that takes naother function as an argument -> sort()
+
+
+flat() method
+TASK: flattens the sub arrays in the outer arrays
+RETURN: returns a new array
+ARGUMENTS: no arguments but you may pass depth argument to 
+CHANGE ORIGINAL VALUE: no
+STATIC / NON-STATIC: non-static
+
+
+toString() method
+TASK: converts array to a string with comma (,) separator
+RETURN: returns a string
+ARGUMENTS: no args
+CHANGE ORIGINAL VALUE: no
+STATIC / NON-STATIC: non-statib
+
+
+join() method
+TASK: converts array to string
+RETURN: returns a string
+ARGUMENTS: when there is no arg, it separates with comma (,) like toString() method
+    it can take a custom separator as an argument
+CHANGE ORIGINAL VALUE: no
+STATIC / NON-STATIC: non-static
+
+TASK: 
+RETURN: 
+ARGUMENTS: 
+CHANGE ORIGINAL VALUE: 
+STATIC / NON-STATIC: 

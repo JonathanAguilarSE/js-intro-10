@@ -22,7 +22,7 @@ HOW TO LINK AND PUSH A NEW PROJECT FROM YOUR LOCAL TO REMOTE
 3. Initialize the repo with GIT
     - $ git init
 4. Link local repo with remote using SSH commands
-    - $ git remote add origin <
+    - $ git remote add origin <URL>
 5. Make some changes
 6. Check the status
     - $ git status
