@@ -28,7 +28,7 @@ CLONING A REMOTE REPO AND MAKLING FIRST PUSH (master)
 
 
 CLONING A REMOTE REPO AND MAKING FIRST PUSH (not master/main) - THIS IS WHAT YOU WILL DO IN THE COMPANY
-1. Clone th eprojcet to your local: git clone <url>
+1. Clone the project to your local: git clone <url>
 2. You are not allowed to do changes and push them with master/main branches
 3. Create your own local branch and switch to it
     git branch <branch-name>

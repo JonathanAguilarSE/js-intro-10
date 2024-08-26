@@ -85,9 +85,3 @@ ARGUMENTS: when there is no arg, it separates with comma (,) like toString() met
     it can take a custom separator as an argument
 CHANGE ORIGINAL VALUE: no
 STATIC / NON-STATIC: non-static
-
-TASK: 
-RETURN: 
-ARGUMENTS: 
-CHANGE ORIGINAL VALUE: 
-STATIC / NON-STATIC: 

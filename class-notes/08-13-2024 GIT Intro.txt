@@ -30,6 +30,7 @@ HOW TO LINK AND PUSH A NEW PROJECT FROM YOUR LOCAL TO REMOTE
     - $ git add fileName
     - $ git add .
 8. Commit the changes with a menaingful message
+    - $ git commit -m '<messsage here>'
 9. Push the changes to remote repo
     - $ git push --set-upstream origin master // or whichever branch it is in
     - $ git push -u origin master
