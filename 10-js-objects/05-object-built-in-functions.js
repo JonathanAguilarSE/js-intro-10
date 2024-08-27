@@ -1,0 +1,37 @@
+const batch10 = {
+    program: 'SDET',
+    numberOfStudents: 15,
+    durationMonth: 6,
+};
+
+const allKeys = Object.keys(batch10); // ['program', 'numberOfStudnts', 'durationMonth']
+const allValues = Object.values(batch10); // ['SDET', 15, 6]
+const allEntries = Object.entries(batch10); // [ ['program, 'SDET'], ['numberOfStudents', 15], ['durationMonth', 6] ]
+
+console.log(allKeys);
+console.log(allValues);
+console.log(allEntries);
+
+console.log('\n----------looping object keys----------\n')
+for(const key of Object.keys(batch10)) {
+    console.log(key);
+}
+
+
+console.log('\n----------looping object values----------\n')
+for(const value of Object.values(batch10)) {
+    console.log(value);
+}
+
+
+console.log('\n----------looping object entries----------\n')
+for(const entry of Object.entries(batch10)) {
+    console.log(entry); //returns an entry as an array [ key, value ]
+    // console.log(entry[0], entry[1]);
+}
+
+
+for(const [key, value] of Object.entries(batch10)) {
+    console.log(key);
+    console.log(value);
+}
