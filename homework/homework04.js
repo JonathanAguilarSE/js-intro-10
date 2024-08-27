@@ -231,10 +231,10 @@ function getMultipleOf5(a, b){
     if(a > b) multiplesOf5.reverse();            
     return multiplesOf5;
 }
-console.log(getMultipleOf5(3, 17));
-console.log(getMultipleOf5(23, 5));
-console.log(getMultipleOf5(5, 5));
-console.log(getMultipleOf5(2, 4));
+console.log(getMultipleOf5(3, 17)); // [ 5, 10, 15 ]
+console.log(getMultipleOf5(23, 5)); // [ 20, 15, 10, 5 ]
+console.log(getMultipleOf5(5, 5)); // [ 5 ]
+console.log(getMultipleOf5(2, 4)); // []
 
 
 console.log('\n---------------TASK20---------------\n');
