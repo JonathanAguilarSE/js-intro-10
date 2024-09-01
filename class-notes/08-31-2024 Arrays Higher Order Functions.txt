@@ -1,0 +1,85 @@
+SYNTAX:
+function funcName
+
+
+
+
+funciton sum(a, b){
+    return a + b;
+}
+
+
+
+
+sum(3, 5);
+
+
+2. Function expression
+const sum = (a, b){
+    return a + b;
+}
+
+sum(3, 5);
+
+
+3. Arrow Functions: released with ES6 and it provides more concise way to create functions
+const sum = (a, b) => {
+    return a + b;
+}
+
+
+?? Create a function called product which returns the multiplication of 2 numbers
+
+const product = (a, b) => {
+    return a * b;
+}
+
+
+
+
+Write a function called printHello which prints 'Hello'
+
+// function declaration
+function printHello(){
+    console.log('Hello');
+}
+
+const printHello = () => {
+    console.log('Hello');
+}
+
+//Enhanced Arrow Function when there is only 1 line of code within body
+const product = (a, b) => a * b; // return type
+const printHello = () => console.log('Hello'); // void type
+
+
+const arr = [40, 30, 2, -5];
+
+arr.sort((a, b) => a - b);
+
+function funcName(a, b) {
+    return a - b;
+}
+
+const funcName = (a, b) => a - b;
+
+
+
+function getInfo(){
+    console.log('Today is Saturday');
+}
+
+function greet(func){
+    console.log('Hello');
+}
+
+greet(getInfo);
+
+
+OUTPUT:
+Hello
+Today is Saturday
+
+greet: higher order function (taking another function as an argument)
+getInfo: callback function (passed as an argument to another finction)
+

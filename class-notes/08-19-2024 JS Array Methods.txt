@@ -29,7 +29,7 @@ Reversing arrays:
     reverse()       -> reverses the array backward
 
 
-Getting a paartial array
+Getting a partial array
     slice()         -> extracts th epartial array with the specified indexes
 
 

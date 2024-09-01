@@ -178,6 +178,17 @@ function getDuplicates(arr){
     }
     return newArr;
 }
+// OR
+// function getDuplicates(arr){
+//     let dup = []
+//     for(let i = 0; i <= arr.length - 1; i++){
+
+//         if(arr.includes(arr[i], i+1) && !dup.includes(arr[i])) dup.push(arr[i])
+//     }
+//     return dup;
+// }
+
+
 console.log(getDuplicates([ 0, -4, -7, 0, 5, 10, 45, -7, 0 ])); // [ 0, -7 ]
 console.log(getDuplicates([ 1, 2, 5, 0, 7 ])); // []
 console.log(getDuplicates(['A', 'foo', '12' , 12, 'bar', 'a', 'a', 'foo' ])); // [ 'foo', 'a' ]
