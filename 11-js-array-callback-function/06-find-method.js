@@ -31,11 +31,11 @@ console.log(firstElement);
 let lastElement = cities.findLast((city) => city.length === 6);
 console.log(lastElement);
 
-let indexLA = cities.reverse().findIndex((city) => city.includes('LA'));
+let indexLA = cities.findIndex((city) => city.includes('LA'));
 console.log(indexLA);
 
 let firstI = cities.find((city) => city.toLowerCase().includes('i'));
 console.log(firstI);
 
-let lastElementWith4 = cities.reverse().find((city) => city.length === 4);
+let lastElementWith4 = cities.findLast((city) => city.length === 4);
 console.log(lastElementWith4);
