@@ -202,11 +202,7 @@ function findClosestTo10(arr) {
 
 console.log('\n---------------TASK14---------------\n');
 function isEmailValid(str){
-    // if(!str) return false;
-
     if(str.includes(' ')) return false;
-    
-    if(str.indexOf('@') !== str.lastIndexOf('@')) return false;
     
     const emailStructure = str.split('@');
     if(emailStructure.length !== 2) return false;
@@ -272,8 +268,8 @@ console.log(isPasswordValid('Test1234#')); // true
 
 
 
-let str = 'howdy@yahoo.com'
-console.log(str.split('@')); // [ 'howdy', 'yahoo.com' ]
+let str = 'howdy@@yahoo.com'
+console.log(str.split('@').length); // [ 'howdy', 'yahoo.com' ]
 
 let str1 = 'yahoo.com'
 console.log(str1.split('.')); // [ 'yahoo', 'com' ]
