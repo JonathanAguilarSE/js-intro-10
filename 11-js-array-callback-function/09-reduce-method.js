@@ -107,7 +107,7 @@ console.log(sumArr)
 
 const objects = [ 'Remote', 'Computer', 'TV', 'Mouse', 'Notebook', 'AC' ];
 
-// the shortest -> get the first shortest     -> AC
+// the shortest -> get the first shortest     -> TV
 // the longest -> get the last longest        -> Notebook
 
 let shortestObject = objects.reduce((acc, curr) => {
@@ -115,4 +115,4 @@ let shortestObject = objects.reduce((acc, curr) => {
   return acc;
 });
 
-console.log(shortestObject); // AC
+console.log(shortestObject); // TV

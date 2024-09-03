@@ -77,6 +77,7 @@ INVALID INPUT
 let t2character = '8'; // 
 
 let t2CharacterASCII = t2character.charCodeAt(0); 
+console.log(t2CharacterASCII);
 
 if(t2CharacterASCII >= 48 && t2CharacterASCII <= 57) {
     console.log(`"${t2character}" is a digit`);

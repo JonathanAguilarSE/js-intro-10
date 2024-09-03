@@ -10,7 +10,7 @@ console.log(countPos([0, -1, -2, -3]));
 
 console.log('\n---------------TASK02---------------\n');
 function countA(str){
-    return str.toLowerCase().split('').filter((char) => char.includes('a')).length;
+    return str.toLowerCase().split('').filter((char) => char === 'a').length;
 }
 
 console.log(countA("TechGlobal is a QA bootcamp")); // 4
@@ -68,7 +68,6 @@ console.log(factorial(1));
 console.log('\n---------------TASK07---------------\n');
 function isPalindrome(str){
     return str.toLowerCase() === str.toLowerCase().split('').reverse().join('');
-    // return str.toLowerCase().map((char) => char === str.toLowerCase().map((char) => char).reverse())
 }
 
 console.log(isPalindrome('Hello')); // false
@@ -143,13 +142,15 @@ console.log(add([-5, 6, -3, 11], [5, -6, 3, -11])); // [0, 0, 0, 0]
 
 console.log('\n---------------TASK12---------------\n');
 function removeExtraSpaces(str){
-    return str.split(' ').filter(word => word).join(' ');
+    return str.split(' ').filter(word => word).join('');
 }
 
 console.log(removeExtraSpaces('Hello'));
 console.log(removeExtraSpaces('      Hello    World     '));
 console.log(removeExtraSpaces('     JavaScript is          fun'));
 console.log(removeExtraSpaces(''));
+
+// console.log(('      Hello    World     '.split(' ')));
 
 /*
 found through research that regex could be a best use case example to utilize here
@@ -161,21 +162,118 @@ string.replace(/^\s+|\s+$/g, ""); // replaces all spaces within and leading and 
 
 console.log('\n---------------TASK13---------------\n');
 function findClosestTo10(arr){
-    let closeTo10 = arr[0];
-    for(let i = 0; i <= arr.length - 1; i++){
-        if(Math.min(10 - arr[i]) !== 0);
-        closeTo10
+    let closestTo10 = null;
+    
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === 10) continue;
+        if(closestTo10 === null) closestTo10 = arr[i];
+        else{
+        let currentDist = Math.abs(10 - arr[i]);
+        let closestDist = Math.abs(10 - closestTo10);
+        if((currentDist < closestDist) || (currentDist === closestDist && arr[i] < closestTo10)) closestTo10 = arr[i];
+        }
     }
+    return closestTo10;
 }
 
 console.log(findClosestTo10([10, -13, 5, 70, 15, 57])); // 5
 console.log(findClosestTo10([10, -13, 8, 12, 15, -20])); // 8
 console.log(findClosestTo10([0, -1, -2])); // 0
 
+/*
+this is a chatgpt solution that I wanted to see if reduce, filter, or mapping was utilized.
+
+function findClosestTo10(arr) {
+    return arr
+        .filter(num => num !== 10) // Exclude 10 from the array
+        .reduce((closest, current) => {
+            let currentDistance = Math.abs(10 - current);
+            let closestDistance = Math.abs(10 - closest);
+
+            if (currentDistance < closestDistance || (currentDistance === closestDistance && current < closest)) {
+                return current;
+            }
+
+            return closest;
+        });
+}
+*/
+
 
 console.log('\n---------------TASK14---------------\n');
+function isEmailValid(str){
+    // if(!str) return false;
 
+    if(str.includes(' ')) return false;
+    
+    if(str.indexOf('@') !== str.lastIndexOf('@')) return false;
+    
+    const emailStructure = str.split('@');
+    if(emailStructure.length !== 2) return false;
 
+    const [emailName, domain] = emailStructure;
+    const domainStructure = domain.split('.');
+    const [domainName , domainExtension] = domainStructure;
+
+    if(domainStructure.length !== 2) return false;
+    if(emailName.length < 2 || domainName.length < 2 || domainExtension < 2) return false;
+
+    return true;
+}
+
+console.log(isEmailValid("")); // false
+console.log(isEmailValid("@gmail.com")); // false
+console.log(isEmailValid("johndoe@yahoo")); // false
+console.log(isEmailValid("johndoe@.com")); // false
+console.log(isEmailValid("a@outlook.com")); // false
+console.log(isEmailValid("johndoe@a.com")); // false
+console.log(isEmailValid("johndoe@@gmail.com")); // false
+console.log(isEmailValid("johndoe@gmail.com")); // true
 
 
 console.log('\n---------------TASK15---------------\n');
+function isPasswordValid(str){
+    // if(!str) return false; // will return false for ALL falsy values but don't need to use this for now
+    if(str.includes(' ')) return false;
+
+    if(str.length < 8 || str.length > 16) return false;
+
+    let hasDigit = false;
+    let hasUpper = false;
+    let hasLower = false;
+    let hasSpecialChar = false;
+
+    for(const char of str){
+        let charASCII = char.charCodeAt(0);
+
+        if(charASCII >= 48 && charASCII <= 57) hasDigit = true;
+        if(charASCII >= 65 && charASCII <= 90) hasUpper = true;
+        if(charASCII >= 97 && charASCII <= 122) hasLower = true;
+        if(!(charASCII >= 48 && charASCII <= 57 || charASCII >= 65 && charASCII <= 90 || charASCII >= 97 && charASCII <= 122)) hasSpecialChar = true;
+        
+    }
+    return hasDigit && hasUpper && hasLower && hasSpecialChar;
+}
+
+console.log(isPasswordValid('')); // false
+console.log(isPasswordValid('abcd')); // false
+console.log(isPasswordValid('abcd1234')); // false
+console.log(isPasswordValid('Abcd1234')); // false
+console.log(isPasswordValid('Chicago12345US!#$%')); // false
+console.log(isPasswordValid('Abcd1234$')); // true
+console.log(isPasswordValid('Chicago123$')); // true
+console.log(isPasswordValid('Test1234#')); // true
+
+
+
+
+
+
+
+
+
+let str = 'howdy@yahoo.com'
+console.log(str.split('@')); // [ 'howdy', 'yahoo.com' ]
+
+let str1 = 'yahoo.com'
+console.log(str1.split('.')); // [ 'yahoo', 'com' ]
