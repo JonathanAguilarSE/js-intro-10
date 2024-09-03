@@ -271,7 +271,7 @@ console.log(isPasswordValid('Test1234#')); // true
 
 
 let str = 'howdy@@yahoo.com'
-console.log(str.split('@').length); // [ 'howdy', 'yahoo.com' ]
+console.log(str.split('@').length); // [ 'howdy', '', 'yahoo.com' ] -> 3
 
 let str1 = 'yahoo.com'
 console.log(str1.split('.')); // [ 'yahoo', 'com' ]
