@@ -204,14 +204,16 @@ console.log('\n---------------TASK14---------------\n');
 function isEmailValid(str){
     if(str.includes(' ')) return false;
     
-    const emailStructure = str.split('@');
+    const emailStructure = str.split('@'); // [ element1, element2 ] if there is only 1 '@' present
     if(emailStructure.length !== 2) return false;
 
     const [emailName, domain] = emailStructure;
+
     const domainStructure = domain.split('.');
+    if(domainStructure.length !== 2) return false;
+
     const [domainName , domainExtension] = domainStructure;
 
-    if(domainStructure.length !== 2) return false;
     if(emailName.length < 2 || domainName.length < 2 || domainExtension < 2) return false;
 
     return true;
