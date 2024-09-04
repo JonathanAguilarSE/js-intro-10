@@ -31,7 +31,7 @@ console.log(countVowels("")); // 0
 console.log('\n---------------TASK04---------------\n');
 function countConsonants(str){
     return str.toLowerCase().split('').filter((char) => char >= 'a' && char <= 'z' && !('aeiou'.includes(char))).length;
-    // return str.toLowerCase().split('').filter((char) => /[a-z]/.test(char) && !('aeiou'.includes(char))).length;
+    // return str.toLowerCase().split('').filter((char) => /[a-z]/.test(char) && !('aeiou'.includes(char))).length; // utilizes REGEX <- LEARN IT!!!
 }
 
 console.log(countConsonants("Hello")); // 3
