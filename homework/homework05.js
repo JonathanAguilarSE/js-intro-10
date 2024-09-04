@@ -35,8 +35,8 @@ function countConsonants(str){
 }
 
 console.log(countConsonants("Hello")); // 3
-console.log(countConsonants("Hello World")); // 8
-console.log(countConsonants("JavaScript is fun")); // 12
+console.log(countConsonants("Hello World")); // 7
+console.log(countConsonants("JavaScript is fun")); // 10
 console.log(countConsonants("")); // 0
 
 
@@ -208,6 +208,8 @@ function isEmailValid(str){
     const emailStructure = str.split('@'); // [ element1, element2 ] if there is only 1 '@' present
     if(emailStructure.length !== 2) return false;
 
+    // 'abc@xyz'.replace('@', '').includes('@') // checks for 2 '@' present
+
     const [emailName, domain] = emailStructure;
 
     const domainStructure = domain.split('.');
@@ -220,6 +222,19 @@ function isEmailValid(str){
     return true;
 }
 
+// Solved in class by Akin
+// function isEmailValid(str){
+//     if(str.includes(' ') || (str.indexOf('@') !== str.lastIndexOf('@')) || !str.includes('@')){
+//         return false
+//     } else{
+//         let beforeAt = str.slice(0, str.indexOf('@'));
+//         let afterAtBeforeDot = str.slice(str.indexOf('@') + 1, str.lastIndexOf('.'));
+//         let afterDot = str.slice(str.lastIndexOf('.') + 1);
+
+//         return beforeAt.length >= 2 && afterAtBeforeDot.length >= 2 && afterDot.length >= 2;
+//     }
+// }
+
 console.log(isEmailValid("")); // false
 console.log(isEmailValid("@gmail.com")); // false
 console.log(isEmailValid("johndoe@yahoo")); // false
@@ -228,6 +243,7 @@ console.log(isEmailValid("a@outlook.com")); // false
 console.log(isEmailValid("johndoe@a.com")); // false
 console.log(isEmailValid("johndoe@@gmail.com")); // false
 console.log(isEmailValid("johndoe@gmail.com")); // true
+console.log(isEmailValid("@#$@$($.!)$")); // true
 
 
 console.log('\n---------------TASK15---------------\n');
@@ -249,7 +265,6 @@ function isPasswordValid(str){
         if(charASCII >= 65 && charASCII <= 90) hasUpper = true;
         if(charASCII >= 97 && charASCII <= 122) hasLower = true;
         if(!(charASCII >= 48 && charASCII <= 57 || charASCII >= 65 && charASCII <= 90 || charASCII >= 97 && charASCII <= 122)) hasSpecialChar = true;
-        
     }
     return hasDigit && hasUpper && hasLower && hasSpecialChar;
 }
