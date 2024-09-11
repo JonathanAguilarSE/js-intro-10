@@ -211,6 +211,7 @@ console.log(secondMin([10])); // 10
 
 
 
+console.log('\n---------------TASK013---------------\n');
 /*
 Requirement: 
 Write a method named mostRepeated() takes an array argument and returns the most counted element from the array.
@@ -223,10 +224,27 @@ mostRepeated(["pen", "pencil", "pen", "123", "abc", "pen", "pencil"]) 	-> "pen"
 mostRepeated([10]) 					-> 10
 mostRepeated(["TechGlobal"]) 				-> "TechGlobal"
 */
-
-console.log('\n---------------TASK013---------------\n');
 function mostRepeated(arr){
-    
+    let mostRepeatedElement = arr[0];
+    let maxCount = 0;
+
+    for(let i = 0; i < arr.length; i++){
+        let count = 0
+
+        for(let j = 0; j < arr.length; j++){
+            if(arr[i] === arr[j]){
+                count++
+            }
+        }
+        if(count > maxCount){
+            maxCount = count;
+            mostRepeatedElement = arr[i];
+        }
+    }
+    return mostRepeatedElement;
 }
 
-console.log(mostRepeated([4, 7, 4, 4, 4, 23, 23, 23]));
+console.log(mostRepeated([4, 7, 4, 4, 4, 23, 23, 23])); // 4
+console.log(mostRepeated(["pen", "pencil", "pen", "123", "abc", "pen", "pencil"])); // pen
+console.log(mostRepeated([10])); // 10
+console.log(mostRepeated(["TechGlobal"])); // TechGlobal
