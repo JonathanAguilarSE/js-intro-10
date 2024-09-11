@@ -25,7 +25,7 @@ console.log(replaceFirstLast('    A    '));
 
 
 console.log('\n---------------TASK03---------------\n');
-const hasVowel = (str) => str.split().map(char => '1234567890'.includes(char) || 'aeiou'.includes(char) ? false : true).toString();
+const hasVowel = (str) => str.toLowerCase().split().map(char => '1234567890'.includes(char) || 'aeiou'.includes(char) ? false : true).toString();
 
 console.log(hasVowel('')); // false
 console.log(hasVowel('JavaScript')); // true
@@ -70,8 +70,8 @@ console.log(averageOfEdges(10, 13, 20)); // 15
 console.log('\n---------------TASK06---------------\n');
 function noA(arr){
     return arr.map(word => {
-        if(word.toLowerCase().startsWith('a')) return '#'.repeat(3);
         // return word.replace(word, '###');
+        if(word.toLowerCase().startsWith('a')) return '#'.repeat(3);
         return word;
     })
 }
@@ -102,7 +102,7 @@ function countPrimes(arr){
     return arr.filter(number => {
         if(number <= 1 || number % 2 === 0 && number !== 2) return false;
         // if(number === 2) return true; // write it in the same conditional perhaps? -- worked
-        for(let i = 3; i < Math.sqrt(number); i++){
+        for(let i = 3; i <= Math.sqrt(number); i+= 2){
             if(number % i === 0) return false;
         }
         return true;
@@ -113,6 +113,7 @@ console.log(countPrimes([-10, -3, 0, 1])); // 0
 console.log(countPrimes([7, 4, 11, 23, 17])); // 4
 console.log(countPrimes([41, 53, 19, 47, 67])); // 5
 console.log(countPrimes([41, 53, 19, 47, 67, 2])); // 6
+console.log(countPrimes([2])); // 1
 
 
 
