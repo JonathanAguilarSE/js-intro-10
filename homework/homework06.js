@@ -102,7 +102,7 @@ function countPrimes(arr){
     return arr.filter(number => {
         if(number <= 1 || number % 2 === 0 && number !== 2) return false;
         // if(number === 2) return true; // write it in the same conditional perhaps? -- worked
-        for(let i = 3; i <= Math.sqrt(number); i+= 2){
+        for(let i = 3; i <= Math.sqrt(number); i++){
             if(number % i === 0) return false;
         }
         return true;

@@ -107,10 +107,13 @@ console.log(count3OrLess('')); // 0
 console.log('\n---------------TASK10---------------\n');
 function isPrime(number){
     if(number <= 1) return false;
-    if(number === 2) return true;
-    if(number % 2 === 0) return false;
-    for(let i = 3; i <= Math.sqrt(number); i += 2){
-        if(number % i === 0) return false;
+    if(number === 2 || number === 3) return true;
+    if(number % 2 === 0 || number % 3 === 0) return false;
+    
+    let d = 5;
+    while(d < number){
+        if(number % d === 0) return false;
+        d += 2;
     }
     return true;
 }
@@ -122,19 +125,34 @@ console.log(isPrime(-5)); // false
 console.log(isPrime(0)); // false
 console.log(isPrime(1)); // false
 console.log(isPrime(4)); // false
+console.log(isPrime(15)); // false
+console.log(isPrime(3)); // true
 
 
 console.log('\n---------------TASK11---------------\n');
 function add(arr1, arr2){
-    let sum = [];
-    let max = Math.max(arr1.length, arr2.length);
-    for(let i = 0; i < max; i++){
-        let num1 = arr1[i] === undefined ? 0 : arr1[i];
-        let num2 = arr2[i] === undefined ? 0 : arr2[i];
-        sum.push(num1 + num2);
-    }
-    return sum;
+    if(arr2.length > arr1.length) [arr1, arr2] = [arr2, arr1];
+    return arr1.map((value, i) => value + (arr2[i] || 0))
 }
+
+// function add(arr1, arr2){
+//     if(arr2.length > arr1.length) [arr1, arr2] = [arr2, arr1];
+//     for(let i = 0; i < arr2.length; i++){
+//         arr1[i] += arr2[i];
+//     }
+//     return arr1
+// }
+
+// function add(arr1, arr2){
+//     let sum = [];
+//     let max = Math.max(arr1.length, arr2.length);
+//     for(let i = 0; i < max; i++){
+//         let num1 = arr1[i] === undefined ? 0 : arr1[i];
+//         let num2 = arr2[i] === undefined ? 0 : arr2[i];
+//         sum.push(num1 + num2);
+//     }
+//     return sum;
+// }
 
 console.log(add([3, 0, 0, 7, 5, 10], [6, 3, 2])); // [9, 3, 2, 7, 5, 10]
 console.log(add([10, 3, 6, 3, 2], [6, 8, 3, 0, 0, 7, 5, 10, 34])); // [16, 11, 9,  3, 2, 7, 5, 10, 34]​
@@ -143,7 +161,8 @@ console.log(add([-5, 6, -3, 11], [5, -6, 3, -11])); // [0, 0, 0, 0]
 
 console.log('\n---------------TASK12---------------\n');
 function removeExtraSpaces(str){
-    return str.split(' ').filter(word => word).join('');
+    // return str.split(' ').filter(word => word).join('');
+    return str.split(' ').filter(word => word.length > 0).join(' ');
 }
 
 console.log(removeExtraSpaces('Hello'));
@@ -163,19 +182,34 @@ string.replace(/^\s+|\s+$/g, ""); // replaces all spaces within and leading and 
 
 console.log('\n---------------TASK13---------------\n');
 function findClosestTo10(arr){
-    let closestTo10 = null;
-    
-    for(let i = 0; i < arr.length; i++){
-        if(arr[i] === 10) continue;
-        if(closestTo10 === null) closestTo10 = arr[i];
-        else{
-        let currentDist = Math.abs(10 - arr[i]);
-        let closestDist = Math.abs(10 - closestTo10);
-        if((currentDist < closestDist) || (currentDist === closestDist && arr[i] < closestTo10)) closestTo10 = arr[i];
+    let closestTo10 = Number.MAX_VALUE;// initialized with the largest possible number because you want to find the closest number to 10 in the array. Setting it to Number.MAX_VALUE ensures that any real number from the array will be smaller and thus replace the value when the loop runs
+    let closestDiff = Number.MAX_VALUE;
+
+    for(const currentNum of arr){
+        if(currentNum === 10) continue;
+        let currentDiff = Math.abs(10 - currentNum);
+        if(currentDiff < closestDiff || (currentDiff === closestDiff && currentNum < closestTo10)){
+            closestTo10 = currentNum;
+            closestDiff = currentDiff;
         }
     }
+
     return closestTo10;
 }
+// function findClosestTo10(arr){
+//     let closestTo10 = null;
+    
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i] === 10) continue;
+//         if(closestTo10 === null) closestTo10 = arr[i];
+//         else{
+//         let currentDist = Math.abs(10 - arr[i]);
+//         let closestDist = Math.abs(10 - closestTo10);
+//         if((currentDist < closestDist) || (currentDist === closestDist && arr[i] < closestTo10)) closestTo10 = arr[i];
+//         }
+//     }
+//     return closestTo10;
+// }
 
 console.log(findClosestTo10([10, -13, 5, 70, 15, 57])); // 5
 console.log(findClosestTo10([10, -13, 8, 12, 15, -20])); // 8
@@ -217,7 +251,7 @@ function isEmailValid(str){
 
     const [domainName , domainExtension] = domainStructure;
 
-    if(emailName.length < 2 || domainName.length < 2 || domainExtension < 2) return false;
+    if(emailName.length < 2 || domainName.length < 2 || domainExtension.length < 2) return false;
 
     return true;
 }
@@ -243,7 +277,7 @@ console.log(isEmailValid("a@outlook.com")); // false
 console.log(isEmailValid("johndoe@a.com")); // false
 console.log(isEmailValid("johndoe@@gmail.com")); // false
 console.log(isEmailValid("johndoe@gmail.com")); // true
-console.log(isEmailValid("@#$@$($.!)$")); // true
+console.log(isEmailValid("@#$@$($.!)$")); // false
 
 
 console.log('\n---------------TASK15---------------\n');
@@ -259,13 +293,20 @@ function isPasswordValid(str){
     let hasSpecialChar = false;
 
     for(const char of str){
-        let charASCII = char.charCodeAt(0);
-
-        if(charASCII >= 48 && charASCII <= 57) hasDigit = true;
-        if(charASCII >= 65 && charASCII <= 90) hasUpper = true;
-        if(charASCII >= 97 && charASCII <= 122) hasLower = true;
-        if(!(charASCII >= 48 && charASCII <= 57 || charASCII >= 65 && charASCII <= 90 || charASCII >= 97 && charASCII <= 122)) hasSpecialChar = true;
+        if(char >= '0' && char <= '9') hasDigit = true;
+        else if(char >= 'A' && char <= 'Z') hasUpper = true;
+        else if(char >= 'a' && char <= 'z') hasLower = true;
+        else hasSpecialChar = true;
     }
+    // for(const char of str){
+    //     let charASCII = char.charCodeAt(0);
+
+    //     if(charASCII >= 48 && charASCII <= 57) hasDigit = true;
+    //     if(charASCII >= 65 && charASCII <= 90) hasUpper = true;
+    //     if(charASCII >= 97 && charASCII <= 122) hasLower = true;
+    //     if(!(charASCII >= 48 && charASCII <= 57 || charASCII >= 65 && charASCII <= 90 || charASCII >= 97 && charASCII <= 122)) hasSpecialChar = true;
+    // }
+
     return hasDigit && hasUpper && hasLower && hasSpecialChar;
 }
 
@@ -286,8 +327,8 @@ console.log(isPasswordValid('Test1234#')); // true
 
 
 
-let str = 'howdy@@yahoo.com'
-console.log(str.split('@').length); // [ 'howdy', '', 'yahoo.com' ] -> 3
+// let str = 'howdy@@yahoo.com'
+// console.log(str.split('@').length); // [ 'howdy', '', 'yahoo.com' ] -> 3
 
-let str1 = 'yahoo.com'
-console.log(str1.split('.')); // [ 'yahoo', 'com' ]
+// let str1 = 'yahoo.com'
+// console.log(str1.split('.')); // [ 'yahoo', 'com' ]

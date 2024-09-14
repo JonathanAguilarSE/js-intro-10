@@ -8,10 +8,10 @@ const obj = {
 // to send this JS object to server, we need to convert to JSON string
 // Serialization
 // Reason for serialization to send data to server: 
-let jsoonObject = JSON.stringify(obj);
+let jsonObject = JSON.stringify(obj);
 
 console.log(obj);
-console.log(jsoonObject);
+console.log(jsonObject);
 
 
 // JSON string
@@ -23,8 +23,8 @@ let student = `{
     "INSTRUCTOR_ID": 1
     }`
 
-//To be able to read the KSON string values, we need to conveet it to JS object
-// eserialization
+//To be able to read the JSON string values, we need to conveet it to JS object
+// Deserialization
 // Reason for deserialization is to read data easier
 
 const JSObject = JSON.parse(student);

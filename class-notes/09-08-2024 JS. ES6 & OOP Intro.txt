@@ -55,7 +55,7 @@ JavaScript is proto-type based programming language.
 ES6 also implemented OOP with classes added.
 
 Object-oriented programming means putting real-life objects into programming. 
-It allows us break down complex objects into smaller pieces in softwares. 
+It allows us to break down complex objects into smaller pieces in softwares.
 
 
 const mouse = {

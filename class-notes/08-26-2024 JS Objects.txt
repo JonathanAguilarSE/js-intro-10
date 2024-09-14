@@ -1,6 +1,6 @@
 RECAP:
 Object: it is a reference date type and stores data in key-value pairs
-Object properties ar enot index based
+Object properties are not index based
 Object properties can be accessed, updated, deleted using the keys.
 
 *** keys are by default string and UNIQUE!!!
@@ -37,8 +37,8 @@ for(const key in phone){
 
 Built-in Object Static Methods
 Object.keys(); -> it takes an object variable as argument and retunrs all the keys as an array
-Object.values(); -> it takes an object variable as argument and retunrs all the values as an array
-Object.entries(); -> it takes an object variable as argument and retunrs all the key-value pairs as a nested array
+Object.values(); -> it takes an object variable as argument and returns all the values as an array
+Object.entries(); -> it takes an object variable as argument and returns all the key-value pairs as a nested array
 
 for(const key of Object.keys(phone)){
     console.log(key);

@@ -1,102 +1,118 @@
+
+
+
+08-31-2024 - JS Arrays Higher Order Functions
+
+
+HOW TO CREATE FUNCTIONS in JS 
+
+1. Function declaration - traditional 
+
 SYNTAX:
-function funcName
-
-
-
-
-funciton sum(a, b){
-    return a + b;
+function funcName(args) {
+  // block
 }
 
 
+function sum(a, b) {
+  return a + b;
+}
 
+
+sum(3, 5); 
+
+
+2. Function expression 
+const sum = function (a, b) {
+  return a + b;
+}
 
 sum(3, 5);
 
 
-2. Function expression
-const sum = (a, b){
-    return a + b;
-}
-
-sum(3, 5);
-
-
-3. Arrow Functions: released with ES6 and it provides more concise way to create functions
+3. Arrow functions: released with ES6 and it provides more concise way to create functions 
 const sum = (a, b) => {
-    return a + b;
+  return a + b;
 }
 
 
-?? Create a function called product which returns the multiplication of 2 numbers
 
+// Create a function called product which returns the multiplication of 2 numbers
+
+// Function declaration
+function product(a, b) {
+  return a * b;
+}
+
+// Function expression 
+const product = function (a, b) {
+  return a * b;
+}
+
+// Arrow function 
 const product = (a, b) => {
-    return a * b;
+  return a * b;
 }
 
 
+// Write a function called printHello which prints 'Hello'
 
-
-Write a function called printHello which prints 'Hello'
-
-// function declaration
-function printHello(){
-    console.log('Hello');
+// function declaration 
+function printHello() {
+  console.log('Hello');
 }
 
+// Function expression 
+const printHello = function () {
+  console.log('Hello');
+}
+
+// Arrow function 
 const printHello = () => {
-    console.log('Hello');
+  console.log('Hello');
 }
 
-//Enhanced Arrow Function when there is only 1 line of code within body
-const product = (a, b) => a * b; // return type
-const printHello = () => console.log('Hello'); // void type
+
+// Enhanced Arrow function when there only 1 line of code within body 
+const product = (a, b) => a * b; // return type 
+const printHello = () => console.log('Hello'); // void
 
 
-const arr = [40, 30, 2, -5];
 
-arr.sort((a, b) => a - b);
 
-function funcName(a, b) {
-    return a - b;
+
+function greet(func) {
+  console.log('Hello');
+  func();
 }
 
-const funcName = (a, b) => a - b;
 
-
-
-function getInfo(){
-    console.log('Today is Saturday');
-}
-
-function greet(func){
-    console.log('Hello');
+function getInfo() {
+  console.log('Today is Saturday');
 }
 
 greet(getInfo);
-
 
 OUTPUT:
 Hello
 Today is Saturday
 
 greet: higher order function (taking another function as an argument)
-getInfo: callback function (passed as an argument to another finction)
+getInfo: callback function (passed as an argument to another function)
 
 
+3 + 5 / 2     -> 5.5
+(3 + 5) / 2   -> 4
 
 
+[ 3, 5, 8, 15 ] -> [ 9, 15, 24, 45 ]
 
-if(curr % 2 === 0) return acc + 1;
-return acc;
+const numbers = [ 3, 5, 8, 15 ];
 
-return curr % 2 === 0 ? acc + 1 : acc;
+const result = [];
 
+for(const num of numbers) {
+  result.push(num * 3);
+}
 
-
-call, apply, bind methods are used to borrow another function and execute it for an object by
-defining this keyword. 
-
-call: takes individual arguments and executes the borrowed function 
-apply: takes an array of arguements and executes the borrowed function
-bind: takes individual arguments and returns a new function to be invoked
+numbers.map((number) => number * 3);
