@@ -79,14 +79,22 @@ console.log(arrFactorial([]));
 
 
 console.log('-----Task08-----');
+// function categorizeCharacters(str){
+//     const newArr = ['', '', ''];
+//     for(const char of str) {
+//         if((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) newArr[0] += char;
+//         else if(char >= '0' && char <= '9') newArr[1] += char;
+//         else newArr[2] += char;
+//     }
+//     return newArr;
+// }
 function categorizeCharacters(str){
-    const newArr = ['', '', ''];
-    for(const char of str) {
-        if((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) newArr[0] += char;
-        else if(char >= '0' && char <= '9') newArr[1] += char;
-        else newArr[2] += char;
-    }
-    return newArr;
+    return str.split('').reduce((typeOfChar, char) => {
+        if((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) typeOfChar[0] += char;
+        else if(char >= '0' && char <= '9') typeOfChar[1] += char;
+        else typeOfChar[2] += char;
+        return typeOfChar;
+    }, ['', '', ''])
 }
 
 console.log(categorizeCharacters("1234")); // [ '' , '1234', '' ] 

@@ -7,6 +7,7 @@ console.log('-----TASK-PART-1----');
 4. Create a function called as getBooks() for Author object that will return all the books
 */
 
+
 class Author{
     constructor(firstName, lastName, country, books){
         this.firstName = firstName;
