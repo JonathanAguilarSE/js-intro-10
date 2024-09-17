@@ -11,9 +11,7 @@ function test1(){
             console.log(message);
             return Actions.validateTitle('Title');
         })
-        .then((message) => {
-            console.log(message);
-        })
+        .then((message) => console.log(message))
         .catch((err) => console.log(err))
 }
 
