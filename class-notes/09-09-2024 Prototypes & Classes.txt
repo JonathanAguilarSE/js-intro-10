@@ -41,7 +41,7 @@ class A extends B {
 
 }
 
-class C extend A {
+class C extends A {
 
 }
 
