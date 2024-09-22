@@ -89,7 +89,8 @@ function noXInVariables(arr){
         let strWithoutX = '';
 
         for(let char of str){
-            if(!['x', 'X'].includes(char)) strWithoutX += char;
+            if(char !== 'x' && char !== 'X') strWithoutX += char;
+            // if(!['x', 'X'].includes(char)) strWithoutX += char;
         }
 
         if(strWithoutX.length > 0) noX.push(isNaN(strWithoutX) ? strWithoutX : Number(str));
