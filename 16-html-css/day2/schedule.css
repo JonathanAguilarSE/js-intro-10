@@ -1,0 +1,17 @@
+p {
+    color: orange;
+    font-size: 50px;
+    font-family: Helvetica;
+}
+
+table {
+    border: 1px;
+}
+
+th {
+    background-color: lightsalmon;
+}
+
+tbody {
+    background-color: lightblue;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="application-form.css">
+    <title>Application Form</title>
+</head>
+<body>
+    <form>
+        <div class="names">
+            <div class="names-field">
+                <label  for="fname">First Name *</label>
+                <input type="text" id="fname"/>
+            </div>
+            
+            <div class="names-field">
+                <label  for="lname">Last Name *</label>
+                <input type="text" id="lname"/>
+            </div>
+        </div>
+        
+        <div class="group">
+            <label class="labels" for="email">Email *</label>
+            <input type="email" id="email"/>
+        </div>
+        
+        <div class="group">
+            <label class="labels" for="phone">Phone *</label>
+            <input type="tel" placeholder="Phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        </div>
+        
+        <div class="group">
+            <label class="labels" for="message">Message *</label>
+            <textarea placeholder="Let us know your questions here..." id="message" rows="5"></textarea>
+        </div>
+        
+        <button type="submit">SUBMIT</button>
+    </form>
+</body>
+</html>
