@@ -120,9 +120,8 @@ console.log(countPrimes([2])); // 1
 console.log('\n---------------TASK09---------------\n');
 function removeDuplicates(arr){  
     return arr.reduce((newArr, element) => {
-        if(!newArr.includes(element)){
-            newArr.push(element);
-        }
+        if(!newArr.includes(element)) newArr.push(element);
+        
         return newArr;
     }, [])
 }
