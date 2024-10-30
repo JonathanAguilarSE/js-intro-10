@@ -126,26 +126,22 @@ console.log(sumDigitsDoubled('n0numh3r3')) // 12
 
 console.log('\n---------------TASK08---------------\n');
 function countOccurrences(str1, str2){
-    let counter = 0;
-    let window = [];
-    const sortedStr2 = str2.split('').sort().join('');
+    let source = str1.toLowerCase().split('');
+    const target = str2.toLowerCase();
 
-    for (const char of str1) {
-        if (str2.includes(char)) {
-            window.push(char);
+    let occurrences = 0;
 
-            if (window.length === str2.length) {
-                if (window.slice().sort().join('') === sortedStr2) {
-                    counter++;
-                }
-                window.shift();
+    while (true) {
+        for (let char of target) {
+            let index = source.indexOf(char);
+            if (index === -1) {
+                return occurrences; // If any char in target is missing, stop
             }
-        } else {
-            window = [];
+            // Remove matched character to avoid reuse
+            source.splice(index, 1);
         }
+        occurrences++; // Increase count if all characters in target are matched
     }
-
-    return counter;
 }
 
 console.log(countOccurrences('Javascript', 'Java')) // 1
@@ -153,6 +149,11 @@ console.log(countOccurrences('Hello', 'World')) // 0
 console.log(countOccurrences('Can I can a can', 'anc')) // 3
 console.log(countOccurrences('Hello', 'l')) // 2
 console.log(countOccurrences('IT conversations', 'IT')) // 2
+// needed help from the chatgpt for this one to fully work
+
+
+
+
 
 
 console.log(['c','a','b'].slice().sort().join('')) // false
