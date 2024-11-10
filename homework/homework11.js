@@ -9,20 +9,31 @@ console.log(countPalindrome("No palindrome here")); // 0
 
 
 console.log('\n---------------TASK02---------------\n');
-function sum(arr, bool){
-    if (bool === true) {
-        return arr.reduce((sum, num, index) => {
-            if (index % 2 === 0) sum += num;
-            return sum;
-        }, 0)
-    }
-    else if (bool === false) {
-        return arr.reduce((sum, num, index) => {
-            if (index % 2 !== 0) sum += num;
-            return sum;
-        }, 0)
-    }
-}
+// function sum(arr, countEvens){
+//     if (countEvens){
+//         return arr.reduce((sum, num, index) => index % 2 === 0 ? sum += num : sum, 0)
+//     } else {
+//         return arr.reduce((sum, num, index) => index % 2 !== 0 ? sum += num : sum, 0)
+//     }
+// }
+// OR
+const sum = (arr, countEvens) => (countEvens) ? arr.reduce((sum, num, index) => index % 2 === 0 ? sum += num : sum, 0) : arr.reduce((sum, num, index) => index % 2 !== 0 ? sum += num : sum, 0);
+
+
+// function sum(arr, bool){
+//     if (bool === true) {
+//         return arr.reduce((sum, num, index) => {
+//             if (index % 2 === 0) sum += num;
+//             return sum;
+//         }, 0)
+//     }
+//     else if (bool === false) {
+//         return arr.reduce((sum, num, index) => {
+//             if (index % 2 !== 0) sum += num;
+//             return sum;
+//         }, 0)
+//     }
+// }
 
 console.log(sum([1, 5, 10], true)) // 11
 console.log(sum([3, 7, 2, 5, 10], false)) // 12
@@ -33,12 +44,20 @@ console.log(sum([1, 2, 3, 4, -4], true)) // 0
 
 console.log('\n---------------TASK03---------------\n');
 function nthChars(str, num){
-    return str.split('').reduce((acc, char, index) => {
-        if ((index + 1) % num === 0){
-            acc.push(char);
-        }
-        return acc;
-    }, []).join('')
+    let result = '';
+
+    for (let i = num - 1; i < str.length; i += num){
+        result += str[i]
+    }
+
+    return result;
+    
+    // return str.split('').reduce((acc, char, index) => {
+    //     if ((index + 1) % num === 0){
+    //         acc.push(char);
+    //     }
+    //     return acc;
+    // }, []).join('')
 }
 
 console.log(nthChars('Java', 2)) // aa
@@ -50,16 +69,25 @@ console.log(nthChars('0123456789', 2)) // 13579
 
 console.log('\n---------------TASK04---------------\n');
 function canFormString(str1, str2){
-    let word1 = str1.toLowerCase().split('');
+    let arr1 = str1.toLowerCase().split('').filter(char => char !== ' ')
+    let arr2 = str2.toLowerCase().split('').filter(char => char !== ' ')
     
-    return str2.toLowerCase().split('').filter(char => char !== ' ').every(char => {
-        let index = word1.indexOf(char);
-        if (index !== -1) {
-            word1.splice(index, 1);
-            return true;
-        }
-        return false;
-    })
+    for (let i = 0; i < arr2.length; i++){
+        if (arr1.includes(arr2[i])) arr1.splice(arr1.indexOf(arr2[i]), 1);
+        else return false;
+    }
+    return true;
+    
+    // let word1 = str1.toLowerCase().split('');
+    
+    // return str2.toLowerCase().split('').filter(char => char !== ' ').every(char => {
+    //     let index = word1.indexOf(char);
+    //     if (index !== -1) {
+    //         word1.splice(index, 1);
+    //         return true;
+    //     }
+    //     return false;
+    // })
 }
 
 console.log(canFormString('Hello', 'Hi')) // false
@@ -71,16 +99,23 @@ console.log(canFormString('12', '123')) // false
 
 console.log('\n---------------TASK05---------------\n');
 function isAnagram(str1, str2) {
-    let word1 = str1.toLowerCase().split('');
+    if (str1 === str2) return false;
+
+    let modStr1 = str1.toLowerCase().replaceAll(' ', '').split('').sort().join('');
+    let modStr2 = str2.toLowerCase().replaceAll(' ', '').split('').sort().join('');
+
+    return modStr1 === modStr2
     
-    return str2.toLowerCase().split('').filter(char => char !== ' ').every(char => {
-        let index = word1.indexOf(char);
-        if (index !== -1) {
-            word1.splice(index, 1);
-            return true;
-        }
-        return false;
-    })
+    // let word1 = str1.toLowerCase().split('');
+    
+    // return str2.toLowerCase().split('').filter(char => char !== ' ').every(char => {
+    //     let index = word1.indexOf(char);
+    //     if (index !== -1) {
+    //         word1.splice(index, 1);
+    //         return true;
+    //     }
+    //     return false;
+    // })
 }
 
 console.log(isAnagram('Apple', 'Peach')); // false
@@ -88,19 +123,29 @@ console.log(isAnagram('listen', 'silent')); // true
 console.log(isAnagram('astronomer', 'moon starer')); // true
 console.log(isAnagram('CINEMA', 'iceman')); // true
 console.log(isAnagram('123', '1234')); // false
+console.log(isAnagram('abc', 'abc')); // false
 
 
 console.log('\n---------------TASK06---------------\n');
-function count(arr, bool){
-    return arr.reduce((acc, num) => {
-        if (bool === true && num % 2 === 0) {
-            acc.push(num)
-        } else if (bool === false && num % 2 !== 0) {
-            acc.push(num)
-        }
-        return acc;
-    }, []).length
-}
+// function count(arr, countEven){
+//     let even = arr.filter(num => num % 2 === 0).length;
+//     let odd = arr.filter(num => num % 2 !== 0).length;
+
+//     return countEven ? even : odd;
+// }
+// OR
+const count = (arr, countEven) => countEven ? arr.filter(num => num % 2 === 0).length : arr.filter(num => num % 2 !== 0).length;
+
+// function count(arr, bool){
+//     return arr.reduce((acc, num) => {
+//         if (bool === true && num % 2 === 0) {
+//             acc.push(num)
+//         } else if (bool === false && num % 2 !== 0) {
+//             acc.push(num)
+//         }
+//         return acc;
+//     }, []).length
+// }
 
 console.log(count([1, 5, 10], true)) // 1
 console.log(count([3, 7, 2, 5, 10], false)) // 3
@@ -111,10 +156,14 @@ console.log(count([1, 2, 3, 4, -4], true)) // 3
 
 console.log('\n---------------TASK07---------------\n');
 function sumDigitsDoubled(str){
-    if (!str.split('').some(char => char >= '0' && char <= '9')) return -1;
-    return str.split('').filter(char => char >= '0' && char <= '9').reduce((sum, num) => {
-        return sum += (Number(num) * 2);
-    }, 0)
+    let result = str.split('').filter(char => char >= '0' && char <= '9').reduce((sum, num) => sum += (Number(num) * 2), 0)
+
+    return result > 0 ? result : -1;
+    
+    // if (!str.split('').some(char => char >= '0' && char <= '9')) return -1;
+    // return str.split('').filter(char => char >= '0' && char <= '9').reduce((sum, num) => {
+    //     return sum += (Number(num) * 2);
+    // }, 0)
 }
 
 console.log(sumDigitsDoubled('Javascript')) // -1
@@ -126,22 +175,29 @@ console.log(sumDigitsDoubled('n0numh3r3')) // 12
 
 console.log('\n---------------TASK08---------------\n');
 function countOccurrences(str1, str2){
-    let source = str1.toLowerCase().split('');
-    const target = str2.toLowerCase();
+    let arrOfOccurrences = [];
 
-    let occurrences = 0;
-
-    while (true) {
-        for (let char of target) {
-            let index = source.indexOf(char);
-            if (index === -1) {
-                return occurrences; // If any char in target is missing, stop
-            }
-            // Remove matched character to avoid reuse
-            source.splice(index, 1);
-        }
-        occurrences++; // Increase count if all characters in target are matched
+    for (let char of str2){
+        arrOfOccurrences.push(str1.split('').filter(c => c.toLowerCase() === char.toLowerCase()).length);
     }
+    return arrOfOccurrences.sort()[0];
+
+    // let source = str1.toLowerCase().split('');
+    // const target = str2.toLowerCase();
+
+    // let occurrences = 0;
+
+    // while (true) {
+    //     for (let char of target) {
+    //         let index = source.indexOf(char);
+    //         if (index === -1) {
+    //             return occurrences; // If any char in target is missing, stop
+    //         }
+    //         // Remove matched character to avoid reuse
+    //         source.splice(index, 1);
+    //     }
+    //     occurrences++; // Increase count if all characters in target are matched
+    // }
 }
 
 console.log(countOccurrences('Javascript', 'Java')) // 1
@@ -149,10 +205,6 @@ console.log(countOccurrences('Hello', 'World')) // 0
 console.log(countOccurrences('Can I can a can', 'anc')) // 3
 console.log(countOccurrences('Hello', 'l')) // 2
 console.log(countOccurrences('IT conversations', 'IT')) // 2
-// needed help from the chatgpt for this one to fully work
-
-
-
 
 
 
