@@ -1,12 +1,21 @@
 console.log('\n---------------TASK01---------------\n');
 function countVC(str){
-    let onlyChars = str.trim().toLowerCase().split('').filter(char => char >= 'a' && char <= 'z');
-    let vowels = 'aeiou';
+    // let onlyChars = str.trim().toLowerCase().split('').filter(char => char >= 'a' && char <= 'z');
+    // let vowels = 'aeiou';
     
-    let vowelCount = onlyChars.filter(char => vowels.includes(char)).length;
-    let consonantCount = (onlyChars.length - vowelCount);
+    // let vowelCount = onlyChars.filter(char => vowels.includes(char)).length;
+    // let consonantCount = (onlyChars.length - vowelCount);
     
-    return {vowels: vowelCount, consonants: consonantCount};
+    // return {vowels: vowelCount, consonants: consonantCount};
+
+    return VC_Count = {
+        'vowels' : str.split('').filter(char => 'aeiouAEIOU'.includes(char)).length,
+        'consonants' : str.split('').filter(char => (char.toLowerCase()  >= 'a' && char.toLowerCase() <= 'z') && !('aeiouAEIOU'.includes(char))).length
+    }
+    // VC_Count['vowels'] = str.split('').filter(char => 'aeiouAEIOU'.includes(char)).length
+    // VC_Count['consonants'] = str.split('').filter(char => (char.toLowerCase()  >= 'a' && char.toLowerCase() <= 'z') && !('aeiouAEIOU'.includes(char))).length
+
+    // return VC_Count
 }
 
 console.log(countVC("Hello")) // {vowels: 2, consonants: 3}
@@ -18,16 +27,23 @@ console.log(countVC("")) // {vowels: 0, consonants: 0}
 
 console.log('\n---------------TASK02---------------\n');
 function countChars(str){
-    return str.trim().toLowerCase().split("").reduce((result, char) => {
-        if(char >= 'a' && char <= 'z') result.letters = (result.letters || 0) +1;
-        else if (char >= '0' && char <= '9') result.numbers = (result.numbers || 0) +1;
-        else if (char) result.specials = (result.specials || 0) +1;
-        return result;
-    }, {});
+    str = str.replaceAll(' ', '')
+    let charCount = {};
+
+    let letterCount = str.split('').filter(char => char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z').length
+    letterCount > 0 ? charCount['letters'] = letterCount : ''
+    
+    let numberCount = str.split('').filter(char => char >= '0' && char <= '9').length
+    numberCount > 0 ? charCount['numbers'] = numberCount : ''
+    
+    let specialCount = str.split('').filter(char => (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z')).filter(char => !(char >= '0' && char <= '9')).length
+    specialCount > 0 ? charCount['specials'] = specialCount : ''
+
+    return charCount
 }
 
 console.log(countChars("Hello")); // {letters: 5}
-console.log(countChars("Programming123")); // {letters: 11, numbers: 3}
+console.log(countChars("Programming 123")); // {letters: 11, numbers: 3}
 console.log(countChars("123AbC!@#")); // {letters: 3, numbers: 3, specials: 3}
 console.log(countChars("0123456789")); // {numbers: 10}
 console.log(countChars("     ")); // {}
@@ -36,14 +52,28 @@ console.log(countChars("")); // {}
 
 console.log('\n---------------TASK03---------------\n');
 function maxOccurrences(str){
-    const groupedChars =  str.trim().split("").filter(char => char !== " ").reduce((charAmt, char) => {
-        charAmt[char] = (charAmt[char] || 0) + 1;
-        return charAmt;
-    }, {});
-    // console.log(groupedChars);
-    const groupedCharsSorted = Object.entries(groupedChars).sort(([, valueA], [, valueB]) => valueB - valueA)[0];
-    // console.log(groupedCharsSorted);
-    return groupedCharsSorted ? groupedCharsSorted[0] : "";
+    // const groupedChars =  str.trim().split("").filter(char => char !== " ").reduce((charAmt, char) => {
+    //     charAmt[char] = (charAmt[char] || 0) + 1;
+    //     return charAmt;
+    // }, {});
+    // // console.log(groupedChars);
+    // const groupedCharsSorted = Object.entries(groupedChars).sort(([, valueA], [, valueB]) => valueB - valueA)[0];
+    // // console.log(groupedCharsSorted);
+    // return groupedCharsSorted ? groupedCharsSorted[0] : "";
+    let occurences = {}
+    let highestCount = 0
+    let highestChar = ''
+
+    str.split('').forEach(char => char !== ' ' ? occurences[char] = occurences[char] + 1 || 1 : '');
+
+    for (key in occurences){
+        if (occurences[key] > highestCount){
+            highestCount = occurences[key]
+            highestChar = key
+        }
+    }
+
+    return highestChar
 }
 
 console.log(maxOccurrences("Hello")); // l
@@ -56,25 +86,25 @@ console.log(maxOccurrences("")); // ""
 
 console.log('\n---------------TASK04---------------\n');
 function starOut(str){
-    return str.split("").reduce((result, char, index, arr) => {
-        if (char === "*" || arr[index - 1] === "*" || arr[index + 1] === "*") {
-            return result;
-        }
-        result.push(char);
-        return result;
-    }, []).join("");
+    // return str.split("").reduce((result, char, index, arr) => {
+    //     if (char === "*" || arr[index - 1] === "*" || arr[index + 1] === "*") {
+    //         return result;
+    //     }
+    //     result.push(char);
+    //     return result;
+    // }, []).join("");
 
     // Below how I originally solved it and was curious to see how you could solve with reduce(). Finally learned how to utilise the fourth parameter more.
-    // let result = [];
+    let result = [];
     
-    // for (let i = 0; i < str.length; i++) {
-    //     if (str[i] === '*' || str[i - 1] === '*' || str[i + 1] === '*') {
-    //         continue;
-    //     }
-    //     result.push(str[i]);
-    // }
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === '*' || str[i - 1] === '*' || str[i + 1] === '*') {
+            continue;
+        }
+        result.push(str[i]);
+    }
 
-    // return result.join("");
+    return result.join("");
 }
 
 console.log(starOut("ab*cd")); // ad
