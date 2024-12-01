@@ -1,14 +1,15 @@
 console.log('\n---------------TASK01---------------\n');
-function repeatingX(str) {
-    let splitStr = str.toLowerCase().split("");
-    // console.log(splitStr)
+// function repeatingX(str) {
+//     let splitStr = str.toLowerCase().split("");
+//     // console.log(splitStr)
 
-    for (let i = 0; i < splitStr.length; i++) {
-        if (splitStr[i] === 'x' && (splitStr[i + 1]) === 'x') return true;
-    }
+//     for (let i = 0; i < splitStr.length; i++) {
+//         if (splitStr[i] === 'x' && (splitStr[i + 1]) === 'x') return true;
+//     }
 
-    return false;
-}
+//     return false;
+// }
+const repeatingX = (str) => str.toLowerCase().includes('xx')
 
 console.log(repeatingX("xTechxGlobalx")) // false
 console.log(repeatingX("Hello Xx World")) // true
@@ -18,7 +19,8 @@ console.log(repeatingX("xxxxx")) // true
 
 
 console.log('\n---------------TASK02---------------\n');
-const isPerfectSquare = (num) => (num === Math.pow(Math.sqrt(num), 2)) ? true : false;
+// const isPerfectSquare = (num) => num === Math.pow(Math.sqrt(num), 2)
+const isPerfectSquare = (num) => Math.sqrt(num) % 1 === 0
 
 console.log(isPerfectSquare(25)) // true
 console.log(isPerfectSquare(24)) // false
