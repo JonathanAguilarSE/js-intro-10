@@ -21,9 +21,7 @@ console.log(hasNumbers("!@#$%^&*()_+")); // false
 
 
 console.log('\n---------------TASK03---------------\n');
-function elementLength(arr) {
-    return arr.map(e => e.length)
-}
+const elementLength = (arr) => arr.map(e => e.length)
 
 console.log(elementLength([ "Hello", "World" ])); // [ 5, 5 ]
 console.log(elementLength([ "Apple", "Banana", "Orange", "Pear" ,])); // [ 5, 6, 6, 4 ]
@@ -52,9 +50,7 @@ console.log(isArraySumEvenOrOdd([ 1, 1, 1, 1, 1 ])); // odd
 
 
 console.log('\n---------------TASK05---------------\n');
-function reverse(str) {
-    return str.split("").reverse().join("")
-}
+const reverse = (str) => str.split("").reverse().join("")
 
 console.log(reverse("Hello World")); // dlroW olleH
 console.log(reverse("TechGlobal")); // labolGhceT
@@ -64,9 +60,7 @@ console.log(reverse("Apples 456")); // 654 selppA
 
 
 console.log('\n---------------TASK06---------------\n');
-function reverseWords(str) {
-    return str.split(" ").map(e => e.split("").reverse().join("")).join(" ")
-}
+const reverseWords = (str) => str.split(" ").map(e => e.split("").reverse().join("")).join(" ")
 
 console.log(reverseWords("Hello World")); // olleH dlroW
 console.log(reverseWords("TechGlobal")); // labolGhceT
