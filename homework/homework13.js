@@ -9,8 +9,8 @@ function countVC(str){
     // return {vowels: vowelCount, consonants: consonantCount};
 
     return VC_Count = {
-        'vowels' : str.split('').filter(char => 'aeiouAEIOU'.includes(char)).length,
-        'consonants' : str.split('').filter(char => (char.toLowerCase()  >= 'a' && char.toLowerCase() <= 'z') && !('aeiouAEIOU'.includes(char))).length
+        'vowels' : str.split('').filter(char => /[aeiou]/i.test(char)).length,
+        'consonants' : str.split('').filter(char => /[a-z]/i.test(char) && /[^aeiou]/i.test(char)).length
     }
     // VC_Count['vowels'] = str.split('').filter(char => 'aeiouAEIOU'.includes(char)).length
     // VC_Count['consonants'] = str.split('').filter(char => (char.toLowerCase()  >= 'a' && char.toLowerCase() <= 'z') && !('aeiouAEIOU'.includes(char))).length
@@ -23,20 +23,21 @@ console.log(countVC("Programming")) // {vowels: 3, consonants: 8}
 console.log(countVC("123AbC")) // {vowels: 1, consonants: 2}
 console.log(countVC("123!@#xyz")) // {vowels: 0, consonants: 3}
 console.log(countVC("")) // {vowels: 0, consonants: 0}
+console.log(countVC("AEioBg7")) // {vowels: 4, consonants: 2}
 
 
 console.log('\n---------------TASK02---------------\n');
 function countChars(str){
-    str = str.replaceAll(' ', '')
+    // str = str.replaceAll(' ', '')
     let charCount = {};
 
-    let letterCount = str.split('').filter(char => char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z').length
+    let letterCount = str.split('').filter(char => /[a-z]/i.test(char)).length
     letterCount > 0 ? charCount['letters'] = letterCount : ''
     
-    let numberCount = str.split('').filter(char => char >= '0' && char <= '9').length
+    let numberCount = str.split('').filter(char => /[0-9]/.test(char)).length
     numberCount > 0 ? charCount['numbers'] = numberCount : ''
     
-    let specialCount = str.split('').filter(char => (char.toLowerCase() >= 'a' && char.toLowerCase() <= 'z')).filter(char => !(char >= '0' && char <= '9')).length
+    let specialCount = str.split('').filter(char => /[^\w\s]/.test(char)).length
     specialCount > 0 ? charCount['specials'] = specialCount : ''
 
     return charCount
@@ -66,7 +67,7 @@ function maxOccurrences(str){
 
     str.split('').forEach(char => char !== ' ' ? occurences[char] = occurences[char] + 1 || 1 : '');
 
-    for (key in occurences){
+    for (let key in occurences){
         if (occurences[key] > highestCount){
             highestCount = occurences[key]
             highestChar = key
@@ -128,16 +129,22 @@ function romanToInt(str){
         "M": 1000
     }
 
-    let total = 0;
+    // let total = 0;
 
-    for (let i = 0; i < str.length; i++){
-        const currentValue = romanValues[str[i]];
-        const nextValue = romanValues[str[i + 1]];
-        if (currentValue < nextValue) total -= currentValue;
-        else total += currentValue
-    }
+    // for (let i = 0; i < str.length; i++){
+    //     const currentValue = romanValues[str[i]];
+    //     const nextValue = romanValues[str[i + 1]];
+    //     if (currentValue < nextValue) total -= currentValue;
+    //     else total += currentValue
+    // }
 
-    return total;
+    // return total;
+    
+    return str.split("").reduce((sum, char, i) => {
+        if (romanValues[char] < romanValues[str[i + 1]]) sum -= romanValues[char]
+        else sum += romanValues[char]
+        return sum
+    }, 0)
 
 }
 

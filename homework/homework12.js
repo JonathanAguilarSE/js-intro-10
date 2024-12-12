@@ -25,7 +25,7 @@ console.log(isSumEvenOrOdd(1, 1, 1)); // odd
 
 
 console.log('\n---------------TASK03---------------\n');
-const decimal2 = (arr) => arr.map(num => Number.isInteger(num) ? num : parseFloat(num.toFixed(2)));
+const decimal2 = (arr) => arr.map(num => Number.isInteger(num) ? num : num.toFixed(2));
 
 console.log(decimal2([94.356, 8.9752])); // [ 94.36, 8.98 ]
 console.log(decimal2([76.62, 128.4, 84] )); // [ 76.62, 128.4, 84 ]
@@ -48,9 +48,9 @@ console.log(myPow(5, 3)); // 125
 
 console.log('\n---------------TASK05---------------\n');
 function findLongestWord(str){
-    if (!str.trim()) return "";
+    // if (!str.trim()) return "";
 
-    return str.trim().split(" ").reduce((longestWord, word) => {
+    return str.trim().split(" ").filter(e => e !== "").reduce((longestWord, word) => {
         if(word.length > longestWord.length) longestWord = word;
         
         return longestWord;

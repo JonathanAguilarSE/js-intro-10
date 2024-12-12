@@ -2,9 +2,9 @@ console.log('\n---------------TASK01---------------\n');
 function toCamelCase(str){
     if (str.trim().split(' ').length <= 1) return str;
 
-    return str.trim().split(' ').filter(e => e !== '').reduce((camelCaseArr, el) => {
-        if (camelCaseArr.length === 0) camelCaseArr.push(el.toLowerCase());
-        else camelCaseArr.push(el.toUpperCase()[0] + el.toLowerCase().slice(1));
+    return str.trim().split(' ').filter(e => e !== '').reduce((camelCaseArr, el, i) => {
+        if (i === 0) camelCaseArr.push(el.toLowerCase());
+        else camelCaseArr.push(el[0].toUpperCase() + el.toLowerCase().slice(1));
         return camelCaseArr;
     }, []).join('');
 }
@@ -19,7 +19,7 @@ console.log(toCamelCase("  ")) //
 
 console.log('\n---------------TASK02---------------\n');
 function toSnakeCase(str){
-    if (str.trim().split(' ').length <= 1) return str;
+    if (str.trim().toLowerCase().split(' ').length < 1) return str;
     
     return str.trim().split(' ').filter(e => e !== '').reduce((snakeCaseArr, el) => {
         snakeCaseArr.push(el.toLowerCase());
@@ -41,7 +41,7 @@ function alternatingCases(str) {
     let shouldCapitalize = true;
     
     for (const char of str) {
-        if (/[a-zA-Z]/) {
+        if (/[a-zA-Z]/.test(char)) {
             result += shouldCapitalize ? char.toUpperCase() : char.toLowerCase();
             shouldCapitalize = !shouldCapitalize;
         } else {
@@ -81,8 +81,8 @@ console.log(isNeutral("+++", "+++")) // +++
 
 console.log('\n---------------TASK05---------------\n');
 function isTrueOrFalse(str){
-    let positiveHalf = str.split('').filter(e => /[a-mA-M]/.test(e)).length;
-    let negativeHalf = str.split('').filter(e => /[n-zN-Z]/.test(e)).length;
+    let positiveHalf = str.split(' ').filter(e => /[a-mA-M]/.test(e[0])).length;
+    let negativeHalf = str.split(' ').filter(e => /[n-zN-Z]/.test(e[0])).length;
 
     return positiveHalf >= negativeHalf;
     // I can put htis in one line but am leaving as is for future reference since I was practicing regex
