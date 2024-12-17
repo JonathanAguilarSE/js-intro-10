@@ -35,11 +35,11 @@ console.log(factorial(4));
 console.log(factorial(0));
 console.log(factorial(1));
 
-
+console.log('look here')
 function arrFactorial(arr){
     return arr.map(e => {
         let product = 1
-        for(let i = e; i >= 1; i--){
+        for(let i = e; i > 0; i--){
             product *= i
         }
         return product
@@ -79,16 +79,16 @@ console.log(firstDuplicate(['foo', 'abc', '123', 'bar']));
 
 
 function getDuplicates(arr){
-    // let duplicates = []
-    // for (let i = 0; i < arr.length; i++){
-    //     if (arr.includes(arr[i], i + 1) && !duplicates.includes(arr[i])) duplicates.push(arr[i])
-    // }
-    // return duplicates
-    return arr.reduce((duplicates, el, i) => {
-        if (arr.includes(arr[i], i + 1) && !duplicates.includes(arr[i])) duplicates.push(el)
+    let duplicates = []
+    for (let i = 0; i < arr.length; i++){
+        if (arr.includes(arr[i], i + 1) && !duplicates.includes(arr[i])) duplicates.push(arr[i])
+    }
+    return duplicates
+    // return arr.reduce((duplicates, el, i) => {
+    //     if (arr.includes(arr[i], i + 1) && !duplicates.includes(arr[i])) duplicates.push(el)
 
-        return duplicates
-    }, [])
+    //     return duplicates
+    // }, [])
 }
 
 console.log(getDuplicates([0, -4, -7, 0, 5, 10, 45, -7, 0]));
@@ -179,10 +179,11 @@ console.log(isPrime(7));
 console.log(isPrime(31));
 console.log(isPrime(3));
 
+console.log('LOOK HERE')
 function findBiggestNumber(str){
     let result = str.replaceAll(/[\D]/g, ' ').split(' ').filter(e => e !== '').sort((a, b) => b - a)
 
-    return result.length > 1 ? result[0] : 0
+    return result.length > 0 ? result[0] : 0
 }
 
 console.log(findBiggestNumber("abc$")); // 0
@@ -222,7 +223,7 @@ console.log(isPowerOf3(6));
 
 function fibonacciSeries1(n){
     if(n === 1) return [0]
-    let sequence = [0,1]
+    let sequence = [0, 1]
     for (let i = 2; i < n; i++){
         sequence[i] = sequence[i - 1] + sequence[i - 2]
     }
@@ -255,7 +256,7 @@ console.log(fibonacciSeries2(1)); // 0
 
 function findUniques(arr1, arr2){
     const concatArr = arr1.concat(arr2)
-    const filteredArr = concatArr.filter(i => !(arr1.includes(i) && arr2.includes(i)))
+    const filteredArr = concatArr.filter(num => !(arr1.includes(num) && arr2.includes(num)))
 
     const set = new Set(filteredArr)
     return [...set]
@@ -267,13 +268,15 @@ console.log(findUniques([1, 2, 3, 4], [3, 4, 5, 5]));
 console.log(findUniques([8, 9], [9, 8, 9]));
 console.log(findUniques([-1, -2], [1, 2]));
 
-function reverseNumber(num){ // 123
-    let reversed = 0
+function reverseNumber(num){
+    let reversed = 0;
 
-    for (let i = num; i > 0; i = Math.floor(i/10)){
-        reversed = (reversed * 10) + (i % 10)
+    while (num > 0) {
+        reversed = (reversed * 10) + (num % 10);
+        num = Math.floor(num / 10);
     }
-    return reversed
+
+    return reversed;
 }
 
 console.log(reverseNumber(371)); // 173
@@ -283,26 +286,15 @@ console.log(reverseNumber(0)); // 0
 console.log(reverseNumber(111)); // 111
 
 
-function isArmstrong(num){
-    let numAsStr = num.toFixed()
-
-    let armstrong = numAsStr.split('').reduce((total, i) => total += Math.pow(i, numAsStr.length), 0)
-
-    return armstrong === num
-}
+const isArmstrong = (num) => num === String(num).split('').reduce((total, e) => total += Math.pow(e, String(num).length), 0)
 
 console.log(isArmstrong(153)) // true
 console.log(isArmstrong(123)) // false
 console.log(isArmstrong(1634)) // true
 console.log(isArmstrong(1111)) // false
 
-function isAnagram(str1, str2){
-    if (str1 === str2) return false
-    let modstr1 = str1.toLowerCase().split('').filter(e => e !== ' ').sort().join('')
-    let modstr2 = str2.toLowerCase().split('').filter(e => e !== ' ').sort().join('')
 
-    return modstr1 === modstr2
-}
+const isAnagram = (str1, str2) => str1 !== str2 ? str1.toLowerCase().split('').filter(e => e !== ' ').sort().join('') ===  str2.toLowerCase().split('').filter(e => e !== ' ').sort().join('') : false
 
 console.log(isAnagram('Apple', 'Peach')); // false
 console.log(isAnagram('listen', 'silent')); // true
@@ -312,10 +304,7 @@ console.log(isAnagram('123', '1234')); // false
 console.log(isAnagram('abc', 'abc')); // false
 
 
-function countPalindrome(str){
-    if(!str) return 0
-    return str.split(' ').filter(word => word.toLowerCase() === word.toLowerCase().split('').reverse().join('')).length
-}
+const countPalindrome = (str) => (!str) ? 0 : str.split(' ').filter(word => word.toLowerCase() === word.toLowerCase().split('').reverse().join('')).length
 
 console.log(countPalindrome("mom and Dad")); // 2
 console.log(countPalindrome("See you at noon")); // 1
